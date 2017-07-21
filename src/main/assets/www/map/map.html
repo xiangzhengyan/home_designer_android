@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+        .BMap_cpyCtrl
+        {
+            display:none;
+        }
+        .anchorBL{
+            display:none;
+        }
+        .item-info{
+            display:inline;
+            width:300px;
+
+        }
+
+
+	</style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=18odnrNrEtGISTudPS3Uxsfq7kdTx4Zg"></script>
+
+    <script src="../../jquery/jquery.min.js"></script>
+
+
+    <title>地图展示</title>
+</head>
+<body>
+
+    <div id="allmap"></div>
+
+    <div id="info" class="info">
+        <div class="item-info">aaaaaaaaaaaaa地图展示地图展示地图展示地图展示地图展示aaaaaaaaaaaaaaaaaaa</div>
+        <div class="item-info">bbbbbbbbbbbbbbbb地图展示地图展示地图展示地图展示bbbbbbbbbbbbbbb</div>
+        <div class="item-info">ccccccccccccccc地图展示地图展示地图展示cccccccccccccccc</div>
+        <div class="item-info">ddddddddddddddddddddddddddddddddd</div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(104.072265,30.6638), 11);  // 初始化地图,设置中心点坐标和地图级别
+	map.setCurrentCity("成都");          // 设置地图显示的城市 此项是必须设置的
+
+    this.addMarker("蓝润广场",30.609137,104.00928);
+    this.addMarker("蓝润光华春天",30.696444,103.895618);
+    this.addMarker("蓝润ＩＳＣ",30.532355,104.073363);
+    this.addMarker("蓝润棠湖春天",30.571203,103.985614);
+    this.addMarker("蓝润锦江春天",30.588458,104.159046);
+
+    map.addEventListener("click", function(e){   //点击事件
+    //alert(e.point.lng + ", " + e.point.lat);
+        if(!e.overlay){
+              hideInfoPanel();
+        }
+    });
+
+
+	function addMarker(name,lat,lng){
+
+        var point = new BMap.Point(lng, lat);
+
+        var icon = new BMap.Icon("marker_active_arrow_down.png", new BMap.Size(12,8));
+        var marker = new BMap.Marker(point,{icon:icon});
+        map.addOverlay(marker);
+
+        var opts = {
+            position : point,    // 指定文本标注所在的地理位置
+            offset   : new BMap.Size(-name.length*6-5, -27)    //设置文本偏移量
+
+        }
+        var label = new BMap.Label(name, opts);  // 创建文本标注对象
+        label.setStyle({
+                 color : "blue",
+                 fontSize : "12px",
+                 padding:"4px",
+                 color:"white",
+                 background:"#FE7131",
+                 border:"1px solid #FE7131",
+                 display:"block",
+             });
+        label.addEventListener("click", function(){
+            showInfoPanel(name);   //提示信息
+
+            });
+        map.addOverlay(label);
+
+	}
+
+	function showInfoPanel(name){
+
+        var h = $(document.body).height()-100;
+        $("#allmap").height(h);
+      //  $("#info").html(name);
+         $("#info").show();
+	}
+
+	function hideInfoPanel(){
+
+        var h = $(document.body).height();
+        $("#allmap").height(h);
+        $("#info").hide();
+	}
+</script>

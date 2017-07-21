@@ -1,0 +1,23 @@
+.gradle
+.idea
+build
+gradle
+libs/*
+!libs/armeabi
+!libs/BaiduLBS_Android.jar
+gradlew
+gradlew.bat
+Home VR.iml
+local.properties
+proguard-unity.txt
+vr_android.iml
+
+src/main/assets/bin
+src/main/jniLibs/*
+!src/main/jniLibs/armeabi/
+
+src/main/res/drawable-mdpi
+src/main/res/drawable-xhdpi
+src/main/res/vales-v14
+src/main/res/vales-v21
+src/main/res/vales-w820dp

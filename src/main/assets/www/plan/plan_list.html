@@ -1,0 +1,93 @@
+<HTML>
+
+<HEAD>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+	<script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        img{
+            width:200px;
+            height:200px;
+        }
+        .tag{
+            padding-left:5px;
+            padding-right:5px;
+            border-radius:3px;
+            color:#fff;
+        }
+    </style>
+
+    <script>
+        function planData(name){
+            window.jsutil.toActivity("com.zfy.homevr.PlanActivity",name);
+        }
+    </script>
+</HEAD>
+<BODY>
+
+
+<div data-role="page" id="pageone">
+
+    <div data-role="header" data-position="fixed">
+        <h1>设计师</h1>
+        <a href="#demo-intro" data-rel="back" onclick="window.jsutil.toBack()" data-icon="carat-l" data-iconpos="notext">返回</a>
+        <!--
+        <a href="#" onclick="window.location.reload()" data-icon="refresh" data-iconpos="notext">Refresh</a>
+        -->
+    </div>
+    <div style="text-align:center;padding:10px">
+        <img src="../main/designer1.jpg" style="width:120px;height:120px;border-radius:120px"/><br/>
+        <span>姓名：张三</span><br/>
+        <span>　　简介：被誉为是设计界的“设计鬼才”，共振设计的创始人和艺术总监。
+            曾担任2008年奥运会的开幕式视频影像设计艺术指导，无论是设计还是艺术，他的作品从题材到表现方式都引起了极大的争议。
+            2015福布斯中国最具潜力设计师。</span>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-filter="false" data-filter-placeholder="设计图名字...">
+
+            <li><a href="#" onclick="planData('欧式设计风格')"><img src="1.jpg"/><h2>欧式设计风格</h2>
+                    <p>春熙国际-A2户型　　<span style="float:right;font-size:1em">评分：8.9</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                    </p>
+                 </a>
+            </li>
+            <li><a href="#" onclick="planData('古典风格')"><img src="2.jpg"/><h2>古典风格</h2>
+                <p>蓝润锦城-楼中楼　　<span style="float:right;font-size:1em">评分：9.5</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                    </p>
+                </a>
+            </li>
+
+            <li><a href="#" onclick="planData('中国少数民族风格')"><img src="3.jpg"/><h2>中国少数民族风格</h2>
+                    <p>蓝润国际大厦-顶级套房<span style="float:right;font-size:1em">评分：8.9</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                    </p>
+                </a>
+            </li>
+            <li><a href="#" onclick="planData('工业化风格')"><img src="4.jpg"/><h2>工业化风格</h2>
+                    <p>祥城家园-B2<span style="float:right;font-size:1em">评分：8.9</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</BODY>
+
+</HTML>

@@ -1,0 +1,254 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <link href="../../iSlider/iSlider.css" rel="stylesheet">
+    <script type="text/javascript" src="../../iSlider/iSlider.js"></script>
+    <script type="text/javascript" src="../../iSlider/iSlider.plugin.dot.js"></script>
+
+    <style>
+        img{
+            width:100px;
+            height:100px;
+        }
+        .islider-dot-wrap {
+            position: relative;
+            bottom: 25px;
+            height:25px;
+            width:100%;
+            z-index:0;
+        }
+        .islider-dot{
+            background: #e8dede;
+            border:0px;
+            width:10px;
+            height:10px;
+        }
+        .islider-dot.active {
+            background-color: #dc0606;
+        }
+    </style>
+
+    <script>
+        function goToHouseTypeList(name){
+          window.jsutil.toActivity("com.zfy.homevr.HouseTypeListActivity",name);
+        }
+         function goToPlanList(name){
+            window.jsutil.toActivity("com.zfy.homevr.PlanListActivity",name);
+          }
+
+         $(function(){
+            //切换时页面不闪烁
+            $("a[data-role=tab]").each(function () {
+                var anchor = $(this);
+                anchor.bind("click", function () {
+                    $.mobile.changePage(anchor.attr("href"), {
+                        transition: "none",
+                        changeHash: false
+                    });
+                    return false;
+                });
+            });
+            $("div[data-role=page]").bind("pagebeforeshow", function (e, data) {
+                $.mobile.silentScroll(0);
+                $.mobile.changePage.defaults.transition = 'slide';
+            });
+
+            var winHeight= $(window).height();
+            $(window).resize(function(){
+                    var thisHeight=$(this).height();
+                    if(winHeight == thisHeight ){
+                        $("#page1Filter").blur();
+                        $("#page2Filter").blur();
+                    }
+                });
+             var list = [
+                {content: 'community1.jpg'},
+                {content: 'community2.jpg'},
+                {content: 'community3.jpg'},
+                {content: 'community4.jpg'}
+            ];
+
+            var S = new iSlider({
+                dom: document.getElementById('iSlider-wrapper'),
+                data: list,
+                isAutoplay: 1,
+                isLooping: 1,
+                isOverspread: 1,
+                animateTime: 800, // ms
+                plugins: ['dot']
+            });
+          });
+     </script>
+</HEAD>
+<BODY>
+
+
+<div data-role="page" id="page1">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>小区</h1>
+        <a style="display:none;"></a>
+
+        <a  href="#page1PopupMenu"  data-rel="popup" data-icon="plus" data-iconpos="notext"></a>
+        <div data-role="popup" id="page1PopupMenu" data-history="false" style="top:13px;min-width:130px;">
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.MipcaActivityCapture',null);">
+                <img src="scan.png" style="width:20px;height:20px;margin-right:15px;"><span>扫一扫</span>
+            </div>
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.ReleaseTaskActivity',null);">
+                <img src="release.png" style="width:20px;height:20px;margin-right:15px;"><span>发布任务</span>
+            </div>
+        </div>
+    </div>
+    <div data-role="none" style="margin-bottom:-40px;">
+        <div data-role="none" id="iSlider-wrapper" style="height:120px;"></div>
+    </div>
+    <div data-role="content" >
+        <div style="display:flex;height:45px;">
+            <div style="width:100%">
+                <input id="page1Filter" data-type="search" placeholder="查找小区...">
+            </div>
+            <div onclick="jsutil.toActivity('com.zfy.homevr.MapActivity',null)" style="display:flex;align-items: center;width:70px;height:45px;margin:5px;" data-role="none">
+                <img src="map.png" style="width:20px;height:20px;"><p>地图</p>
+            </div>
+        </div>
+        <ul data-role="listview" data-inset="true" data-filter="true" data-input="#page1Filter" >
+            <li><a href="#" onclick="goToHouseTypeList('蓝润广场');"><img src="community1.jpg"/><h2>蓝润广场</h2><p>12 张设计图 54 条评论 <span style="float:right;font-size:1em">户型图 10</span></p><p>更新日期 2007-05-21</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润光华春天');"><img src="community2.jpg"/><h2>蓝润光华春天</h2><p>5 张设计图 33 条评论 <span style="float:right;font-size:1em">户型图 6</span></p><p>更新日期 2007-04-14</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润ISC');"><img src="community3.jpg"/><h2>蓝润ISC</h2><p>8 张设计图 12 条评论 <span style="float:right;font-size:1em">户型图 8</span></p><p>更新日期 2007-06-22</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润棠湖春天');"><img src="community4.jpg"/><h2>蓝润棠湖春天</h2><p>20 张设计图 126 条评论 <span style="float:right;font-size:1em">户型图 12</span></p><p>更新日期 2007-06-18</p></a></li>
+
+            <li><a href="#" onclick="goToHouseTypeList('蓝润锦江春天');"><img src="community1.jpg"/><h2>蓝润锦江春天</h2><p>12 张设计图 54 条评论 <span style="float:right;font-size:1em">户型图 10</span></p><p>更新日期 2007-05-21</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润东悦荟');"><img src="community2.jpg"/><h2>蓝润东悦荟</h2><p>5 张设计图 33 条评论 <span style="float:right;font-size:1em">户型图 6</span></p><p>更新日期 2007-04-14</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润蓝客城');"><img src="community3.jpg"/><h2>蓝润蓝客城</h2><p>8 张设计图 12 条评论 <span style="float:right;font-size:1em">户型图 8</span></p><p>更新日期 2007-06-22</p></a></li>
+            <li><a href="#" onclick="goToHouseTypeList('蓝润睿城');"><img src="community4.jpg"/><h2>蓝润睿城</h2><p>20 张设计图 126 条评论 <span style="float:right;font-size:1em">户型图 12</span></p><p>更新日期 2007-06-18</p></a></li>
+
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" data-icon="home" data-role="tab" class="ui-btn-active ui-state-persist">小区</a></li>
+                <li><a href="#page2" data-icon="star" data-role="tab" >设计师</a></li>
+                <li><a href="#page3" data-icon="gear" data-role="tab" >我的</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div data-role="page" id="page2">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>设计师</h1>
+        <a style="display:none;"></a>
+
+        <a  href="#page2PopupMenu"  data-rel="popup" data-icon="plus" data-iconpos="notext" class="a1"></a>
+        <div data-role="popup" id="page2PopupMenu" data-history="false" style="top:13px;min-width:130px;">
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.MipcaActivityCapture',null);">
+                <img src="scan.png" style="width:20px;height:20px;margin-right:15px;"><span>扫一扫</span>
+            </div>
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.ReleaseTaskActivity',null);">
+                <img src="release.png" style="width:20px;height:20px;margin-right:15px;"><span>发布任务</span>
+            </div>
+        </div>
+    </div>
+    <div data-role="content">
+        <input id="page2Filter" data-type="search" placeholder="查找设计师...">
+        <ul data-role="listview" data-inset="true" data-filter="true" data-input="#page2Filter" data-filter-placeholder="查找设计师...">
+            <li><a href="#" onclick="goToPlanList('张三');"><img src="designer1.jpg"/><h2>张三</h2><p>★★★☆☆ 54 条评论 <span style="float:right;font-size:1em">设计图 10</span></p><p>更新日期 2007-05-21</p></a></li>
+            <li><a href="#" onclick="goToPlanList('李四');"><img src="designer2.jpg"/><h2>李四</h2><p>★★☆☆☆ 33 条评论 <span style="float:right;font-size:1em">设计图 6</span></p><p>更新日期 2007-04-14</p></a></li>
+            <li><a href="#" onclick="goToPlanList('王五');"><img src="designer3.jpg"/><h2>王五</h2><p>★★★★★ 12 条评论 <span style="float:right;font-size:1em">设计图 8</span></p><p>更新日期 2007-06-22</p></a></li>
+            <li><a href="#" onclick="goToPlanList('赵六');"><img src="designer1.jpg"/><h2>赵六</h2><p>★★★☆☆ 126 条评论 <span style="float:right;font-size:1em">设计图 12</span></p><p>更新日期 2007-06-18</p></a></li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1"  data-role="tab" data-icon="home">小区</a></li>
+                <li><a href="#page2"  data-role="tab" data-icon="star"  class="ui-btn-active ui-state-persist">设计师</a></li>
+                <li><a href="#page3"  data-role="tab" data-icon="gear">我的</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="page3">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>我的</h1>
+        <a style="display:none;"></a>
+        <a  href="#page3PopupMenu" data-rel="popup"   data-icon="plus" data-iconpos="notext"></a>
+        <div data-role="popup" id="page3PopupMenu" data-history="false" style="top:13px;min-width:130px;">
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.MipcaActivityCapture',null);">
+                <img src="scan.png" style="width:20px;height:20px;margin-right:15px;"><span>扫一扫</span>
+            </div>
+            <div style="display:flex;margin:15px;" onclick="window.jsutil.toActivity('com.zfy.homevr.ReleaseTaskActivity',null);">
+                <img src="release.png" style="width:20px;height:20px;margin-right:15px;"><span>发布任务</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div style="background:rgb(233,233,233);margin-top:10px;padding:10px;display:flex;">
+            <img src="designer3.jpg" style="width:70px;height:70px;"/>
+            <div style="padding:10px;">
+                <p style="margin-bottom:4px;margin-top:0px;font-size:20px;">蒙娜丽莎</p>
+                <span >15182000797</span>
+            </div>
+            <div style="width:100%;height:70px;">
+                <img src="right.png" style="width:25px;height:25px;float:right;margin-top:22.5px;"/>
+            </div>
+        </div>
+
+        <div style="background:rgb(233,233,233);margin-top:10px;padding-left:10px;">
+            <div style="display:flex;height:40px;align-items:center;border-bottom:1px solid #fff;">
+                <img src="my_money.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">钱包</p>
+            </div>
+            <div style="display:flex;height:40px;align-items:center;border-bottom:1px solid #fff;">
+                <img src="../plan/collect.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">收藏</p>
+            </div>
+            <div style="display:flex;height:40px;align-items:center;border-bottom:1px solid #fff;">
+                <img src="my_sign.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">签到</p>
+            </div>
+            <div style="display:flex;height:40px;align-items:center;border-bottom:1px solid #fff;">
+                <img src="my_share.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">分享</p>
+            </div>
+            <div style="display:flex;height:40px;align-items:center;">
+                <img src="my_see.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">查看任务</p>
+            </div>
+        </div>
+
+        <div style="background:rgb(233,233,233);margin-top:10px;padding-left:10px;">
+            <div style="display:flex;height:40px;align-items:center;border-bottom:1px solid #fff;">
+                <img src="my_set.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">设置</p>
+            </div>
+            <div style="display:flex;height:40px;align-items:center;">
+                <img src="my_switch.png" style="width:20px;height:20px;" >
+                <p style="margin:5px;margin-left:10px;">切换身份</p>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" data-role="tab" data-icon="home">小区</a></li>
+                <li><a href="#page2" data-role="tab" data-icon="star" >设计师</a></li>
+                <li><a href="#page3" data-role="tab" data-icon="gear"  class="ui-btn-active ui-state-persist">我的</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+</BODY>
+
+</HTML>

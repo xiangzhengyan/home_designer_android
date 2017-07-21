@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        .tag{
+            padding-left:5px;
+            padding-right:5px;
+            padding-top;2px;
+            padding-bottom:2px;
+            border-radius:3px;
+            color:#fff;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#title").html(window.webActivity.getParams());
+        });
+
+        function seeImg(){
+            window.jsutil.showToast("待开发。。。");
+        }
+        function seeVR(){
+            window.jsutil.toActivity("com.zfy.homevr.UnityPlayerActivity",null);
+        }
+        function seeVideo(){
+            window.jsutil.showToast("待开发。。。");
+        }
+    </script>
+</HEAD>
+<BODY>
+    <div data-role="header" data-position="fixed">
+        <h1 id="title1">设计风格</h1>
+        <a href="#demo-intro" data-rel="back" onclick="window.jsutil.toBack()" data-icon="carat-l" data-iconpos="notext">返回</a>
+    </div>
+    <img src="3.jpg" style="width:100%;height:200px;">
+
+    <div style="padding:10px;">
+        <div style="border-bottom:1px solid #abc;display:flex;width:100% ">
+            <div style="width:100%;padding-right:20px;">
+                <p>欧洲设计风格</p>
+                <p><span>发布日期：2017-6-25</span><span style="float:right;">浏览：56次</span></p>
+            </div>
+            <div style="width:50px;margin-top:21px;">
+                <img src="collect.png" style="width:30px;height:30px;display:block;"/>
+                <span>收藏</span>
+            </div>
+        </div>
+
+        <div style="display:flex;">
+            <button onclick="seeImg()" disabled="true">图片</button>
+            <button onclick="seeVR()" style="margin-left:10px;margin-right:10px;">VR</button>
+            <button disabled="true" >视频</button>
+        </div>
+
+        <div style="border-top:1px solid #abc;border-bottom:1px solid #abc;padding-top:5px;padding-bottom:5px;display:flex;">
+            <img src="../main/designer1.jpg" style="width:100px;height:100px;"/>
+            <div style="margin-left:10px;">
+                <h3>张三</h3>
+                <p>最近20天内发布了一套设计　<a style="color:red;font-size:12px;"><u>查看更多</u></a></p>
+            </div>
+        </div>
+
+        <div>
+            <p>小　区：蓝润锦城</p>
+            <p>户　型：B2楼中楼</p>
+            <p>设　计：以欧洲风格设计，的格里克石场。房屋的基础和外墙所用的石料，取自弗吉尼亚州 石料用船沿波托马克河运到华盛顿。
+                房屋的门窗和地板所用的优质木材，来自北卡罗莱纳和弗吉尼亚州。石灰采自马里兰的弗里德里克室内的桌、椅、书橱和灯具等，均为古典式
+            </p>
+        </div>
+
+        <div style="border-top:1px solid #abc;border-bottom:1px solid #abc;">
+            <p><img src="head.png" style="width:20px;height:20px;bottom:3px;margin-right:5px;"><span>人脸</span>
+            <span style="float:right;color:rgb(150,150,150);">未认证</span></p>
+
+            <p><img src="plan.png" style="width:20px;height:20px;bottom:3px;margin-right:5px;"><span>设计师</span>
+                <span style="float:right;color:rgb(102,214,48);">已认证</span></p>
+
+            <p><img src="zfb.png" style="width:20px;height:20px;bottom:3px;margin-right:5px;"><span>支付宝</span>
+                <span style="float:right;color:rgb(102,214,48);">已授权</span></p>
+        </div>
+    </div>
+
+    <div data-role="footer" class="ui-btn" data-position="fixed" data-tap-toggle="false" style="margin:0px;">
+        <div data-role="controlgroup" data-type="horizontal">
+            <a href="#" data-role="button" data-icon="carat-l">上一设计图</a>
+            <a href="#" data-role="button" data-icon="carat-r" data-iconpos="right">下一设计图</a>
+            <a href="#" data-role="button" data-icon="grid">评论</a>
+        </div>
+    </div>
+
+    <div data-role="popup" id="myPopup" class="ui-content">
+        <p>这是一个简单的弹窗。</p>
+    </div>
+
+</BODY>
+</HTML>

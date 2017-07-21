@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/login_register.css">
+    <script>
+        function buyHouse(){
+            $("#buy_house").addClass("login_style");
+            $("#designer").removeClass("login_style");
+        }
+        function designer(){
+            $("#designer").addClass("login_style");
+            $("#buy_house").removeClass("login_style");
+        }
+        function eye(){
+            if($("#password_input").attr("type")=="password"){
+                $("#password_input").attr("type","text");
+                $("#eye_img").attr("src","eye_on.png");
+            }else{
+                $("#password_input").attr("type","password");
+                $("#eye_img").attr("src","eye_off.png");
+            }
+        }
+    </script>
+</HEAD>
+<BODY>
+    <div data-role="header" data-position="fixed">
+        <h1>注册</h1>
+        <a   onclick="window.jsutil.toBack()" data-role="none" style="background:url('return.png') no-repeat 0px center / 20px 20px;width:20px;height:20px;margin:10px;"></a>
+    </div>
+    <div style="display:flex;border-bottom:1px solid #dfdfdf;height:35px;">
+        <p id="buy_house" class="login_type login_style" onclick="buyHouse();">购房者注册</p>
+        <p id="designer" class="login_type" onclick="designer();">设计师注册</p>
+    </div>
+
+
+    <div data-role="content"  id="fastLoginDiv">
+        <div style="display:flex;">
+            <input type="text" data-role="none" placeholder="请输入11位数字有效手机号" class="user_background"/>
+            <p  class="p_verifyCode blue_background">获取验证码</p>
+        </div>
+        <input type="text" data-role="none" placeholder="请输入短信验证码" class="safety_background"/>
+        <div style="display:flex;">
+            <input id="password_input" type="password" data-role="none" placeholder="请设置登录密码" class="password_background"/>
+            <Img id="eye_img" src="eye_off.png" class="img_eye" onclick="eye();">
+        </div>
+
+        <p onclick="window.jsutil.toActivityAndFinish('com.zfy.homevr.MainActivity',null);" style="margin-top:10px;" class="p_button blue_background">注册并登录</p>
+
+        <p>1.注册即代表您同意<span class="blue_color">《home designer用户使用协议》</span></p>
+        <p>2.登录完善资料后即可发布任务，接取任务</p>
+        <p>3.关注微信公众号homedesigner可以及时接受最新任务消息</p>
+    </div>
+
+
+</BODY>
+</HTML>

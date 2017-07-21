@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        $(function(){
+            $("#sjs").change(function(){
+                if($("#sjs").prop('checked')){
+                    $("#designer").show();
+                }else{
+                    $("#designer").hide();
+                }
+            });
+
+        });
+        function releaseTask(){
+            var city1 = $("#city1").val();
+            var city2 = $("#city2").val();
+            var community = $("#community").val();
+            var house = $("#house").val();
+            var all="all";
+            if(city1==all || city2==all || community==all || house==all){
+                window.jsutil.showToast("请填写完信息");
+            }else{
+                window.jsutil.showToast("发布成功");
+                window.jsutil.toBack();
+            }
+        }
+    </script>
+</HEAD>
+<BODY>
+    <div>
+        <div data-role="header" data-position="fixed">
+            <h1>发布任务</h1>
+            <a  data-rel="back" onclick="window.jsutil.toBack()" data-icon="carat-l" data-iconpos="notext"></a>
+        </div>
+
+        <div style="padding:15px;">
+            <div style="display:flex;" >
+            <p >城市：</p>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <select id="city1" data-mini="true">
+                    <option value="all">全部</option>
+                    <option value="sc">四川省</option>
+                    <option value="gd">广东省</option>
+                    <option value="zx">直辖市</option>
+                </select>
+                <select id="city2" data-mini="true">
+                    <option value="all">全部</option>
+                    <option value="cd">成都</option>
+                    <option value="bj">北京</option>
+                    <option value="gd">广东</option>
+                </select>
+                <select id="city3" data-mini="true">
+                    <option>全部</option>
+                    <option>大邑县</option>
+                    <option>岳池县</option>
+                    <option>双流县</option>
+                </select>
+            </fieldset>
+        </div>
+            <div style="display:flex;align-items:center;" >
+                <p >小区：</p>
+                <select id="community" data-mini="true">
+                    <option value="all">全部</option>
+                    <option>蓝润锦城</option>
+                    <option>蓝润ISC</option>
+                    <option>祥城家园</option>
+                </select>
+            </div>
+            <div style="display:flex;align-items:center;" >
+                <p>户型：</p>
+                <select  id="house" data-mini="true">
+                    <option value="all">全部</option>
+                    <option>A1楼中楼</option>
+                    <option>A2差层</option>
+                    <option>B1大平方</option>
+                    <option>B1小平方</option>
+                </select>
+            </div>
+            <div style="display:flex;align-items:center;" >
+                <p >预算：</p>
+                <select  data-mini="true">
+                        <option>不限</option>
+                        <option>3万</option>
+                        <option>5万</option>
+                        <option>10万</option>
+                        <option>20万</option>
+                    </select>
+                    <p>～</p>
+                    <select  data-mini="true">
+                        <option>不限</option>
+                        <option>8万</option>
+                        <option>20万</option>
+                        <option>30万</option>
+                        <option>50万</option>
+                    </select>
+            </div>
+            <div>
+                <span>备注：</span>
+                <textarea></textarea>
+            </div>
+
+            <div>
+                <label for="sjs">是否指定设计师</label>
+                <input type="checkbox" name="favcolor" id="sjs" value="red">
+            </div>
+
+
+            <div data-role="fieldcontain" style="display:none;" id="designer">
+                <label for="select-choice-1" class="select">设计师:</label>
+                <select name="select-choice-1" id="select-choice-1">
+                    <option value="standard">张三</option>
+                    <option value="rush">李四</option>
+                    <option value="express">王五</option>
+                    <option value="overnight">赵六</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="window.jsutil.toBack();" data-role="tab" data-icon="delete" >取消</a></li>
+                <li><a onclick="releaseTask();" data-role="tab" data-icon="check"  >发布</a></li>
+            </ul>
+        </div>
+    </div>
+</BODY>
+</HTML>

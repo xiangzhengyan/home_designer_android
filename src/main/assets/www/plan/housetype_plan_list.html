@@ -1,0 +1,93 @@
+<HTML>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<HEAD>
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+	<script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        img{
+            width:200px;
+            height:200px;
+        }
+        .tag{
+            padding-left:5px;
+            padding-right:5px;
+            border-radius:3px;
+            color:#fff;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $("#title").html(window.webActivity.getParams());
+
+        });
+        function planData(name){
+            window.jsutil.toActivity("com.zfy.homevr.PlanActivity",name);
+        }
+    </script>
+</HEAD>
+<BODY>
+
+
+<div data-role="page" id="pageone">
+
+    <div data-role="header" data-position="fixed">
+        <h1 id="title"></h1>
+        <a href="#demo-intro" data-rel="back" onclick="window.jsutil.toBack()" data-icon="carat-l" data-iconpos="notext">返回</a>
+        <!--
+        <a href="#" onclick="window.location.reload()" data-icon="refresh" data-iconpos="notext">Refresh</a>
+        -->
+    </div>
+    <div style="text-align:center;padding:10px">
+        <img src="../housetype_list/house_type1.jpg" style="width:280px;height:180px;"/><br/>
+        <span>126平 3室2厅2卫</span><br/>
+
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-filter="false" data-filter-placeholder="设计图名字...">
+
+            <li><a href="#" onclick="planData('欧式设计风格')"><img src="1.jpg"/><h2>欧式设计风格</h2><p>评分：8.9　　<span style="float:right;font-size:1em">评论数：10</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span style="float:right;font-size:1em">更新日期 2007-05-21</span>
+                    </p>
+                 </a>
+            </li>
+            <li><a href="#" onclick="planData('古典风格')"><img src="2.jpg"/><h2>古典风格</h2><p>评分：8.9　　<span style="float:right;font-size:1em">评论数：6</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                        <span style="float:right;font-size:1em">更新日期 2007-04-14</span>
+                    </p>
+                </a>
+            </li>
+
+            <li><a href="#" onclick="planData('中国少数民族风格')"><img src="3.jpg"/><h2>中国少数民族风格</h2><p>评分：8.9　　<span style="float:right;font-size:1em">评论数：8</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                        <span style="float:right;font-size:1em">更新日期 2007-06-22</span>
+                    </p>
+                </a>
+            </li>
+            <li><a href="#" onclick="planData('工业化风格')"><img src="4.jpg"/><h2>工业化风格</h2><p>评分：8.9　　<span style="float:right;font-size:1em">评论数：12</span></p>
+                    <p>
+                        <span class="tag" style="background:rgb(72,134,43)">图片</span>
+                        <span class="tag" style="background:rgb(225,193,40)">VR</span>
+                        <span class="tag" style="background:rgb(143,129,228)">视频</span>
+                        <span style="float:right;font-size:1em">更新日期 2007-06-18</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</BODY>
+
+</HTML>

@@ -1,0 +1,29 @@
+<HTEML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        $(function(){
+            $("#url").html(window.webActivity.getParams());
+        });
+    </script>
+</HEAD>
+<BODY>
+    <div data-role="header" data-position="fixed">
+        <h1>二维码</h1>
+        <a  data-rel="back" onclick="window.jsutil.toBack()" data-icon="carat-l" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content">
+        <span style="border-bottom:1px solid blue;" id="url"></span>
+        <div style="display:flex;margin:10px;">
+            <p style="width:50%;text-align:center;background:#50bcee;color:#ffffff;margin:0;padding-top:10px;padding-bottom:10px;border-radius:5px;margin-right:10px">链接</p>
+            <p style="width:50%;text-align:center;background:#50bcee;color:#ffffff;margin:0;padding-top:10px;padding-bottom:10px;border-radius:5px;margin-left:10px;">返回</p>
+        </div>
+    </div>
+</BODY>
+</HTEML>

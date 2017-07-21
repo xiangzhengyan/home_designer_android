@@ -1,0 +1,68 @@
+.login_style{
+    color:#1a9dd9;
+    border-bottom:1px solid #1a9dd9;
+}
+.login_type{
+    width:50%;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+input{
+    text-indent:30px;
+    width:100%;
+    border:0px;
+    border-bottom:1px solid #abc;
+    height:30px;
+    font-size:13px;
+}
+.blue_background{
+    background:#1a9dd9;
+}
+.blue_color{
+    color:#1a9dd9;
+}
+.min_span{
+    font-size:12px;
+}
+.p_button{
+    width:100%;
+    text-align:center;
+    color:#ffffff;
+    margin:0;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius:5px;
+}
+.p_verifyCode{
+    position:absolute;
+    right:18px;
+    margin:0px;
+    padding:5px;
+    border-radius:3px;
+    font-size:13px;
+    color:#ffffff;
+}
+.p_user{
+    width:110px;
+    text-align:center;
+    border:1px solid #1a9dd9;
+    padding:10px;
+    border-radius:7px;
+}
+div .top_right_color{
+    color:#1a9dd9;
+}
+.user_background{
+    background:url('../www/login/user.png') no-repeat 5px center / 22px 22px;margin-top:5px;
+}
+.password_background{
+    background:url('../www/login/password.png') no-repeat 5px center / 22px 22px;margin-top:10px;
+}
+.img_eye{
+    width:25px;height:25px;position:absolute;right:18px;margin-top:13px;
+}
+.safety_background{
+    background:url('../www/login/safety.png') no-repeat 5px center / 22px 22px;margin-top:10px;
+}

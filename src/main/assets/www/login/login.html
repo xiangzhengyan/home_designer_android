@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../jquery/jquery.mobile-1.4.5.min.css">
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/login_register.css">
+    <script>
+        function passwordLogin(){
+            $("#passwordLoginP").addClass("login_style");
+            $("#fastLoginP").removeClass("login_style");
+            $("#fastLoginDiv").hide();
+            $("#passwordLoginDiv").show();
+        }
+        function fastLogin(){
+            $("#fastLoginP").addClass("login_style");
+            $("#passwordLoginP").removeClass("login_style");
+            $("#fastLoginDiv").show();
+            $("#passwordLoginDiv").hide();
+        }
+        function eye(){
+            if($("#password_input").attr("type")=="password"){
+                $("#password_input").attr("type","text");
+                $("#eye_img").attr("src","eye_on.png");
+            }else{
+                $("#password_input").attr("type","password");
+                $("#eye_img").attr("src","eye_off.png");
+            }
+        }
+        function login(){
+            var user = $("#user_input").val();
+            var password =$("#password_input").val();
+            if(user=="" || password ==""){
+                window.jsutil.showToast("账号和密码不能为空");
+            }else{
+                window.jsutil.toActivityAndFinish("com.zfy.homevr.MainActivity",null);
+            }
+        }
+        $(function(){
+            var winHeight= $(window).height();
+            $(window).resize(function(){
+                    var thisHeight=$(this).height();
+                    if(winHeight == thisHeight ){
+                        $("#footer").show();
+                    }else{
+                        $("#footer").hide();
+                    }
+             });
+        });
+        function register(){
+            window.jsutil.toActivity('com.zfy.homevr.RegisterActivity',null);
+        }
+    </script>
+<BODY>
+    <div data-role="header" data-position="fixed">
+        <h1>登录</h1>
+        <a  data-role="none"></a>
+        <a data-role="none" class="top_right_color" style="margin:8px;margin-top:14px;" onclick="window.jsutil.toActivityAndFinish('com.zfy.homevr.MainActivity',null);">随便看看</a>
+    </div>
+    <div style="display:flex;border-bottom:1px solid #dfdfdf;height:35px;">
+        <p id="passwordLoginP" class="login_type login_style" onclick="passwordLogin();">密码登录</p>
+        <p id="fastLoginP" class="login_type" onclick="fastLogin();">快捷登录</p>
+    </div>
+
+    <div data-role="content" id="passwordLoginDiv">
+        <input type="text" id="user_input" class="user_background" data-role="none" placeholder="请输入手机号码/会员卡号" />
+        <div style="display:flex;">
+            <input id="password_input" type="password" class="password_background" data-role="none" placeholder="请输入登录密码"/>
+            <Img id="eye_img" src="eye_off.png" class="img_eye"  onclick="eye();">
+        </div>
+        <div style="display:flex;">
+            <p class="min_span">没有账号？</p>
+            <p class="min_span blue_color"  onclick="register();">立即注册</p>
+            <p class="min_span blue_color" style="position:absolute;right:15px;" onclick="window.jsutil.showToast('功能待开发。。。');">忘记密码？</p>
+        </div>
+        <!--<button style="margin:0px;background:#7ad99d;color:#ffffff" onclick="login();">登录</button>-->
+        <p onclick="login();" class="p_button blue_background">登录</p>
+    </div>
+
+    <div data-role="content" style="display:none;" id="fastLoginDiv">
+        <div style="display:flex;">
+            <input type="text" data-role="none" placeholder="请输入手机号码" class="user_background"/>
+            <p  class="p_verifyCode blue_background">获取验证码</p>
+        </div>
+        <input type="text" data-role="none" placeholder="请输入验证码" class="safety_background"/>
+        <div style="display:flex;">
+            <p class="min_span">没有账号？</p>
+            <p class="min_span blue_color" >立即注册</p>
+            <p class="min_span blue_color" style="position:absolute;right:15px;">忘记密码？</p>
+        </div>
+        <!--<button style="margin:0px;background:#7ad99d;color:#ffffff" onclick="window.jsutil.toActivityAndFinish('com.zfy.homevr.MainActivity',null);">登录</button>-->
+        <p onclick="window.jsutil.toActivityAndFinish('com.zfy.homevr.MainActivity',null);" class="p_button blue_background">登录</p>
+    </div>
+
+    <div style="position:fixed;bottom:30px;left:50%;margin-left:-55px;" id="footer">
+        <p class="p_user blue_color">设计师登录</p>
+    </div>
+</BODY>
+</HEAD>
+</HTML>
